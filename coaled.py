@@ -12,4 +12,13 @@ df_pl = df[df['Country Name'] == 'Poland']
 #print(df_pl.head())
 
 tips = sns.load_dataset('tips')
-print(tips.head())
+#print(tips.head())
+
+
+sns.relplot(data = df[(df['Country Name'] == 'Poland') | (df['Country Name'] == 'France')],
+            x = 'Year',
+            y = 'CO2 (kt)',
+            aspect = 2.5,
+            kind='line',
+            hue = 'Country Name')
+plt.show()
