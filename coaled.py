@@ -19,6 +19,40 @@ sns.relplot(data = df[(df['Country Name'] == 'Poland') | (df['Country Name'] == 
             x = 'Year',
             y = 'CO2 (kt)',
             aspect = 2.5,
-            kind='line',
-            hue = 'Country Name')
+            kind='line', #(1)scatter
+            hue = 'Country Name') #(1) col='Country Name'
+#plt.show()
+
+sns.relplot(x='total_bill',
+            y='tip',
+            aspect=2.5,
+            data=tips,
+            size='size',
+            hue='smoker',
+            kind='scatter');
+#plt.show()
+
+sns.catplot(x='Region',
+            y='CO2 Per Capita (metric tons)',
+            data=df[df['Year'] == 2010],
+            aspect=2.5)
+#plt.show()
+
+tips = sns.load_dataset('tips')
+sns.catplot(x='day',
+            y='tip',
+            aspect=2.5,
+            data=tips,
+            kind='box',
+            hue='sex')
+#plt.show()
+
+# sns.implot(data=df[((df['Country Name'] == 'Poland') | (df['Country Name'] == 'France'))],
+
+tips = sns.load_dataset('tips')
+sns.distplot(tips['tip'],bins=10)
+#plt.show()
+
+sns.distplot(tips[tips['day'] == 'Sun']['tip'], bins=10, kde_kws={'Label' : 'Sunday'})
+sns.distplot(tips[tips['day'] == 'Fri']['tip'], bins=10, kde_kws={'Label' : 'Friday'})
 plt.show()
